@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  crossorigin="anonymous">
+<div class="container-fluid d-flex justify-content-center">
+    <div class="d-flex flex-column">
+        <div class="bd-highlight d-flex justify-content-center">
+            <h1>Taches</h1>
+            <button class="btn btn-outline-secondary m-1" (click)="loggout()">Logout</button>
+
+        </div>
+  
+    
+     
+       
+        <div class="bd-highlight d-flex justify-content-center">
+            <input id="Ajout_Liste" type="text" name="Ajout_Liste" placeholder="Ajout Liste" [(ngModel)]="titreU"> 
+
+
+            <button id="Ajout_Liste_button" class="btn btn-primary" value="Ajouter" (click)='ajouterNewListe()'>
+                Ajouter
+            </button>
+
+        </div>
+        <div class="row ">
+        <div class="col-6 justify-content-center mt-3" *ngFor="let ListeIndentation of Liste_Taches" >
+            <div class="d-flex   justify-content-center ">
+
+
+              <h3>  {{ListeIndentation.TitreListe}} </h3>
+
+
+                <input id="EnCours_taches" type="text" name="En_cours" placeholder="Veuillez add une tache" [(ngModel)]="NouvelleTache.titre"
+                (ngModelChange)="NouvelleTache.statut=ListeIndentation.TitreListe"> 
+    
+                <button id="EnCours_tache_button" class="btn btn-primary" value="Ajouter" (click)='ajouter(ListeIndentation)'>
+                    Ajouter
+                </button>
+            </div>
+           
+            <div class="d-flex  justify-content-center">
+                <div id="listeTaches" class="d-flex  flex-column">
+                    <div cdkDropList  [cdkDropListData]="ListeIndentation.ListeTaches" id="{{ListeIndentation.TitreListe}}"
+                class="item-list" (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="filter">
+                Liste des taches:
+                <div class="d-flex justify-content-between m-1" *ngFor="let tache of ListeIndentation.ListeTaches" cdkDrag [cdkDragData]="tache">
+                    <input (click)="modifier(tache)" type="checkbox" [(ngModel)]="tache.termine">
+                    <div [ngClass]="tache.termine? 'text-decoration-line-through' : '' " >{{tache.titre}}</div>
+                    <button class="btn btn-outline-danger m-1" (click)='supprimer(tache,ListeIndentation)'>Supprimer</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    
+        
