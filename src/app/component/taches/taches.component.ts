@@ -21,10 +21,9 @@ export class TachesComponent implements OnInit {
   tachesTermine: Array<Tache> = [];
   
   NewListe:Liste ={
-
-    TitreListe:'',
-    ListeTaches:[]
-    
+    TitreListe: '',
+    ListeTaches: [],
+    TestNgModel: ''
   }
   newTache: Tache = {
     titre : '',
@@ -52,10 +51,9 @@ export class TachesComponent implements OnInit {
     statut:''
   };
   NouvelleListe: Liste ={
-
-    TitreListe:'',
-    ListeTaches:[]
-    
+    TitreListe: '',
+    ListeTaches: [],
+    TestNgModel: ''
   }
 
   
@@ -111,17 +109,23 @@ export class TachesComponent implements OnInit {
   }  
 
   ajouter(ListeHere: Liste) {
-    
+    console.log("Nouveau titre?" + ListeHere.TestNgModel)
     let NouvelleTache : Tache = {
-      titre : '',
+      titre : ListeHere.TestNgModel,
       termine : false,
       statut:''
     };
+   
     this.tacheService.ajoutTaches(this.NouvelleTache).subscribe({
-      next: (data) => {
-        NouvelleTache.titre=this.titreC
+      next: (data:Tache) => {
          NouvelleTache.statut=this.titreU
-        ListeHere.ListeTaches.push(data);
+         NouvelleTache.titre=ListeHere.TestNgModel
+         console.log("titre de la tache:" + NouvelleTache.titre)
+         console.log(data)
+         console.log(data.titre)
+         ListeHere.ListeTaches.push(data);
+        
+        
       }
     });
     
@@ -129,10 +133,9 @@ export class TachesComponent implements OnInit {
   ajouterNewListe(TitreRecup:string, testAjout:number,RecupTache:Array<Tache>) {
     if(testAjout==0){
       let NouvelleListe: Liste ={
-
-        TitreListe:TitreRecup,
-        ListeTaches:RecupTache,
-        
+        TitreListe: TitreRecup,
+        ListeTaches: RecupTache,
+        TestNgModel: ''
       }
       console.log("Apparition liste sauvegardé?")
       this.Liste_Taches.push(NouvelleListe);
@@ -140,10 +143,9 @@ export class TachesComponent implements OnInit {
     }
     else{
         let NouvelleListe: Liste ={
-
-          TitreListe:'',
-          ListeTaches:[]
-          
+          TitreListe: '',
+          ListeTaches: [],
+          TestNgModel: ''
         }
         NouvelleListe.TitreListe=this.titreU
         this.Liste_Taches.push(NouvelleListe);

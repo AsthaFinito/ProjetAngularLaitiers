@@ -8,7 +8,7 @@ export interface Liste{
 
     _id?:string;
     TitreListe:string;
-    
+    TestNgModel:string;
     ListeTaches:Array<Tache>;
     
 }

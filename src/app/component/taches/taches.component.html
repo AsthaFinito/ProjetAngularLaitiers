@@ -27,8 +27,8 @@
               <h3>  {{ListeIndentation.TitreListe}} </h3> <button class="btn btn-outline-danger m-1" (click)='supprimerListe(ListeIndentation)'>Supprimer</button>
 
 
-                <input id="EnCours_taches" type="text" name="En_cours" placeholder="Veuillez add une tache" [(ngModel)]="NouvelleTache.titre"
-                (ngModelChange)="NouvelleTache.statut=ListeIndentation.TitreListe"> 
+                <input id="EnCours_taches" type="text" name="En_cours" placeholder="Veuillez add une tache" [(ngModel)]="ListeIndentation.TestNgModel"
+                (ngModelChange)="NouvelleTache.statut=ListeIndentation.TitreListe " (ngModelChange)="NouvelleTache.titre=ListeIndentation.TestNgModel" > 
     
                 <button id="EnCours_tache_button" class="btn btn-primary" value="Ajouter" (click)='ajouter(ListeIndentation)'>
                     Ajouter
