@@ -23,5 +23,7 @@ export class UserService {
   isConnected(): Observable<void> {
     return this.http.get<void>('http://localhost:3000/isConnected', { withCredentials: true });
   }
-
+  signIn(): Observable<void> {
+    return this.http.get<void>('http://localhost:3000/signIn', { withCredentials: true });
+  }
 }

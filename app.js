@@ -34,6 +34,7 @@ function checkSignIn(req, res, next) {
 
 app.post('/signin', signIn);
 app.post('/login', login);
+app.post('/signIn',signIn)
 app.post('/logout', logout);
 app.get('/isConnected', checkSignIn, isConnected);
 app.get('/taches', checkSignIn, tacheGet);
