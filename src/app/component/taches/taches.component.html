@@ -24,7 +24,7 @@
             <div class="d-flex   justify-content-center ">
 
 
-              <h3>  {{ListeIndentation.TitreListe}} </h3>
+              <h3>  {{ListeIndentation.TitreListe}} </h3> <button class="btn btn-outline-danger m-1" (click)='supprimerListe(ListeIndentation)'>Supprimer</button>
 
 
                 <input id="EnCours_taches" type="text" name="En_cours" placeholder="Veuillez add une tache" [(ngModel)]="NouvelleTache.titre"

@@ -147,6 +147,40 @@ export class TachesComponent implements OnInit {
     });
 
   }
+  supprimerListe(ListeHere: Liste): void {
+    let index=0;
+    if(ListeHere.ListeTaches.length!=0){
+    ListeHere.ListeTaches.forEach(element => {
+      this.tacheService.removeTaches(element).subscribe({
+        next: (data) => {
+          ListeHere.ListeTaches = ListeHere.ListeTaches.filter(t => element._id != t._id);
+        }
+      });
+      
+      this.Liste_Taches.forEach(element2 =>{
+          if(element2===ListeHere){
+            this.Liste_Taches.splice(index,1)
+          }
+          else{
+            index=index+1;
+          }
+      });
+    
+    });
+    
+
+  }
+  else{
+    this.Liste_Taches.forEach(element2 =>{
+      if(element2===ListeHere){
+        this.Liste_Taches.splice(index,1)
+      }
+      else{
+        index=index+1;
+      }
+  });
+  }
+}
   supprimerUndi(tache: Tache): void {
     this.tacheService.removeTaches(tache).subscribe({
       next: (data) => {
