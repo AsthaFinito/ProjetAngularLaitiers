@@ -60,7 +60,8 @@ export class TachesComponent implements OnInit {
 
   
   filter:Array<string>= []
-  
+  recup_statut: Array<string>=[]
+  recup_tache:Array<Tache>=[]
   staut:Array<string>= ['En cours','Undefined','En Attente','Termine']
   titreU:string ='';
   titreA:string ='';
@@ -73,10 +74,37 @@ export class TachesComponent implements OnInit {
     private router: Router){ }
   
   ngOnInit(): void {
+    
+    let parcours_taches=0
     this.tacheService.getTaches().subscribe({
       next: (data:Array<Tache>) => {
-         this.taches = data;
-        
+         data.forEach(element => {
+          if(this.recup_statut.includes(element.statut)===false){
+             this.recup_statut.push(element.statut);
+             console.log("Rentre dans le push")
+             console.log(element.statut)
+          }
+          else{
+            console.log("Statut deja dans le tableau")
+          }
+          
+          console.log("Ici les statut recup :" + this.recup_statut +"Fin tableau")
+         });
+
+         this.recup_statut.forEach(element2 => {
+            let titre=element2
+            
+            
+           data.forEach(element3 => {
+              if(element3.statut===element2){
+                this.recup_tache.push(element3)
+              }
+              
+            });
+            this.ajouterNewListe(element2,0,this.recup_tache)
+            this.recup_tache=[]
+          });
+         
          }
     });
    
@@ -98,18 +126,30 @@ export class TachesComponent implements OnInit {
     });
     
   }
-  ajouterNewListe() {
-    let NouvelleListe: Liste ={
+  ajouterNewListe(TitreRecup:string, testAjout:number,RecupTache:Array<Tache>) {
+    if(testAjout==0){
+      let NouvelleListe: Liste ={
 
-      TitreListe:'',
-      ListeTaches:[]
-      
+        TitreListe:TitreRecup,
+        ListeTaches:RecupTache,
+        
+      }
+      console.log("Apparition liste sauvegardé?")
+      this.Liste_Taches.push(NouvelleListe);
+      this.filter.push(NouvelleListe.TitreListe)
     }
-    NouvelleListe.TitreListe=this.titreU
-    this.Liste_Taches.push(NouvelleListe);
-    console.log(this.Liste_Taches)
-    this.filter.push(NouvelleListe.TitreListe)
-   
+    else{
+        let NouvelleListe: Liste ={
+
+          TitreListe:'',
+          ListeTaches:[]
+          
+        }
+        NouvelleListe.TitreListe=this.titreU
+        this.Liste_Taches.push(NouvelleListe);
+        console.log(this.Liste_Taches)
+        this.filter.push(NouvelleListe.TitreListe)
+      }
   }
     ajouterUndi() {
     
