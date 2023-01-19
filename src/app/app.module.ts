@@ -9,6 +9,7 @@ import { LoginComponent } from './component/login/login.component';
 import { TachesComponent } from './component/taches/taches.component';
 import { FiltreTachePipe } from './pipe/filtre-tache.pipe';
 import { DragDropModule } from '@angular/cdk/drag-drop' ;
+import { CreationCompte } from './component/signIn/signIn';
 
 
 @NgModule({
@@ -16,7 +17,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop' ;
     AppComponent,
     LoginComponent,
     TachesComponent,
-    FiltreTachePipe
+    FiltreTachePipe,
+    CreationCompte,
+
   ],
   imports: [
     BrowserModule,

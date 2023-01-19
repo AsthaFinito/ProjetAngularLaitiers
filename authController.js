@@ -42,3 +42,21 @@ exports.logout = async function (req, res) {
 exports.isConnected = async function (req, res) {
     res.status(200).end();
 }
+exports.getUser = async function (req, res) {
+    try {
+        let utilisateur = req.body;
+        db = await MongoClient.connect(url);
+        let dbo = db.db("taches");
+        let utilisateurs = await dbo.collection("Autenthification").find({}).toArray();
+        console.log("dans le getuser")
+        if (utilisateurs.length > 0) {
+            req.session.user = utilisateurs[0].login;
+            res.status(200).send();
+        } else {
+            res.status(401).json({ message: 'Unauthorized' });
+        }
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: err })
+    }
+}

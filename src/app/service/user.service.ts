@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
+  [x: string]: any;
+  
 
   url: string = 'http://localhost:3000/login';
 
@@ -23,7 +25,8 @@ export class UserService {
   isConnected(): Observable<void> {
     return this.http.get<void>('http://localhost:3000/isConnected', { withCredentials: true });
   }
-  signIn(): Observable<void> {
-    return this.http.get<void>('http://localhost:3000/signIn', { withCredentials: true });
+  signIn(NouvelleUtilisateur: User): Observable<void> {
+    return this.http.post<void>('http://localhost:3000/signIn',NouvelleUtilisateur, { withCredentials: true });
   }
+  
 }
