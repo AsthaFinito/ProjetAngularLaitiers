@@ -3,26 +3,12 @@
 
 
 
-<!-- 
-  <<< Author notes: Start of the course >>> 
-  Include start button, a note about Actions minutes,
-  and tell the learner why they should take the course.
-  Each step should be wrapped in <details>/<summary>, with an `id` set.
-  The start <details> should have `open` as well.
-  Do not use quotes on the <details> tag attributes.
--->
+<!--Etape 1: Mises en place d'une todo liste avec un système de connexion
 
-<!--step0
-
-People use GitHub to build some of the most advanced technologies in the world. Whether you’re visualizing data or building a new game, there’s a whole community and set of tools on GitHub that can help you do it even better. GitHub Skills’ “Introduction to GitHub” course guides you through everything you need to start contributing in less than an hour.
-
-- **Who is this for**: New developers, new GitHub users, and students.
-- **What you'll learn**: We'll introduce repositories, branches, commits, and pull requests.
-- **What you'll build**: We'll make a short Markdown file you can use as your [profile README](https://docs.github.com/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme).
-- **Prerequisites**: None. This course is a great introduction for your first day on GitHub.
-- **How long**: This course is four steps long and takes less than one hour to complete.
-
-## How to start this course
+Une tache a maintenant un nouvel attribut : statut qui peut avoir 4 valeurs : Absence de valeur, En 
+attente, En cours, Terminé. L'affichage dans le navigateur doit se faire en fonction de ce statut. Il a 
+donc fallu creer 4 "listes" en fonction des 4 statuts et modifier le statut de la tche lors de l'ajout grace
+à  (ngModelChange)
 
 1. Above these instructions, right-click **Use this template** and open the link in a new tab.
    ![Use this template](https://user-images.githubusercontent.com/1221423/169618716-fb17528d-f332-4fc5-a11a-eaa23562665e.png)
