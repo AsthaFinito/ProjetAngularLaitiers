@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../model/user';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -25,7 +26,8 @@ export class UserService {
   isConnected(): Observable<void> {
     return this.http.get<void>('http://localhost:3000/isConnected', { withCredentials: true });
   }
-  signIn(NouvelleUtilisateur: User): Observable<void> {
+  signIn2(NouvelleUtilisateur: User): Observable<void> {
+    console.log(NouvelleUtilisateur.login)
     return this.http.post<void>('http://localhost:3000/signIn',NouvelleUtilisateur, { withCredentials: true });
   }
   

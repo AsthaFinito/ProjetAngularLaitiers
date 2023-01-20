@@ -11,7 +11,7 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class LoginComponent {
   error: boolean = false;
-  user: User = { login: 'admin', password: 'admin' };
+  user: User = { login: '', password: '' };
 
   constructor(private userService: UserService, private router: Router) {
 

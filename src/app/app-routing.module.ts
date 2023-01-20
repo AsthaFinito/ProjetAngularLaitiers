@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './component/login/login.component';
-import { CreationCompte } from './component/signIn/signIn';
+import { CreationCompte } from './component/signIn/signIn.component';
 import { TachesComponent } from './component/taches/taches.component';
 import { IsSignedInGuard } from './is-signed-in.guard';
 

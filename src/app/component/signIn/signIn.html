@@ -5,9 +5,12 @@
                 <div class="card bg-dark text-white" style="border-radius: 1rem;">
                     <div class="card-body p-5 text-center">
 
-                        <div class="mb-md-5 mt-md-4 pb-5">
-                            <div  class="alert alert-danger">
-                                Erreur lors de la tentative d'authentification
+                        <div class="mb-md-5 mt-md-4 pb-5" >
+                            <div  class="alert alert-danger" *ngIf="erreur">
+                                Compte deja existant
+                            </div>
+                            <div  class="alert alert-success" *ngIf="anti_erreur">
+                                Creation reussi
                             </div>
                             <h2 class="fw-bold mb-2 text-uppercase">Sign In</h2>
                             <p class="text-white-50 mb-5">Entrez votre nom d'utilisateur et votre mot de passe</p>
@@ -20,13 +23,16 @@
                                 <input type="password" id="typePasswordX" class="form-control form-control-lg" [(ngModel)]="user.password" />
                             </div>
 
-
+                            <!--<button class="btn btn-outline-light btn-lg px-5" type="submit" (click)='getUser()'>Avoir tt les user</button> -->
                             <button class="btn btn-outline-light btn-lg px-5" type="submit" (click)='submit()'>Création du compte</button>
 
                             
                         </div>
 
-
+                        <div>
+                            <p class="mb-0">Vous venez de creer votre compte ? <a href="/" class="text-white-50 fw-bold">Connectez-vous</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

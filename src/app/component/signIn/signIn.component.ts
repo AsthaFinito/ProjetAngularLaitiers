@@ -12,13 +12,14 @@ import { NgModule } from '@angular/core';
 
 
 @Component({
-  selector: 'app-taches',
+  selector: 'app-sign-in',
   templateUrl: './signIn.html',
  // styleUrls: ['./taches.component.css'],
   
 })
 export class CreationCompte{
-
+  erreur:boolean=false
+  anti_erreur:boolean=false
 
     user: User = {
       login: '',
@@ -29,14 +30,16 @@ export class CreationCompte{
 
     }
     submit():void {
-      
-      this.userService.signIn(this.user).subscribe({
+     
+      this.userService.signIn2(this.user).subscribe({
         next: () => {
-          this.router.navigate([''])
-          console.log("Compte")
+          this.anti_erreur=true
+          this.erreur = false
+          this.router.navigate(['signIn'])
+         // console.log("Compte")
         
        },
-        error: () => {  }
+       error: () => { this.erreur = true; }
       });
 
       
