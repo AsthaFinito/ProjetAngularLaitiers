@@ -10,3 +10,4 @@ attente, En cours, Terminé. L'affichage dans le navigateur doit se faire en fon
 donc fallu creer 4 "listes" en fonction des 4 statuts et modifier le statut de la tche lors de l'ajout grace
 à  (ngModelChange)
 
+-->
