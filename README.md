@@ -11,3 +11,5 @@ donc fallu creer 4 "listes" en fonction des 4 statuts et modifier le statut de l
 à  (ngModelChange)
 
 -->
+
+https://youtu.be/gBHcwd_bZto
